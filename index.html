@@ -82,10 +82,10 @@
       </nav>
 
       <div class="header-social-links">
-        <a href="https://twitter.com/ahsanamingorsi" class="twitter"><i class="bi bi-twitter-x"></i></a>
-        <a href="https://facebook.com/@ahsanamingorsi" class="facebook"><i class="bi bi-facebook"></i></a>
-        <a href="https://instagram.com/@ahsanamingorsi" class="instagram"><i class="bi bi-instagram"></i></a>
-        <a href="https://linkedin.com/in/ahsan-amin-gorsi" class="linkedin"><i class="bi bi-linkedin"></i></a>
+        <a href="https://x.com/ahsanamingorsi" class="twitter"><i class="bi bi-twitter-x"></i></a>
+        <a href="https://www.facebook.com/share/1Cjf5EfiFf/" class="facebook"><i class="bi bi-facebook"></i></a>
+        <a href="https://www.instagram.com/ahsanamingorsi?igsh=MWg5cWJzODVkNXZ6Zg==" class="instagram"><i class="bi bi-instagram"></i></a>
+        <a href="https://www.linkedin.com/in/ahsan-amin-gorsi-439ab6345?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" class="linkedin"><i class="bi bi-linkedin"></i></a>
       </div>
 
 
@@ -222,14 +222,14 @@
                 </div>
               </div>
 
-              <div class="signature mt-4">
-                <div class="signature-image">
+          <!--     <div class="signature mt-4">
+               <div class="signature-image">
                   <img src="assets/img/misc/signature-1.webp" alt="" class="img-fluid">
                 </div>
                 <div class="signature-info">
                   <h4>Ahsan Amin</h4>
                   <p>.NET C# Web Developer | Pakistan</p>
-                </div>
+                </div>-->
               </div>
             </div>
           </div>
@@ -940,30 +940,83 @@
               <div class="card-body p-4 p-lg-5">
 
                 <!-- Formsubmit Contact Form -->
-                <form id="contactForm" class="php-email-form">
-                  <div class="row gy-4">
-                    <div class="col-12">
-                      <input type="text" name="name" class="form-control" placeholder="Your Name" required>
-                    </div>
-                    <div class="col-12">
-                      <input type="email" name="email" class="form-control" placeholder="Your Email" required>
-                    </div>
-                    <div class="col-12">
-                      <input type="text" name="subject" class="form-control" placeholder="Subject" required>
-                    </div>
-                    <div class="col-12">
-                      <textarea name="message" rows="6" class="form-control" placeholder="Message" required></textarea>
-                    </div>
+<form id="contactForm" class="php-email-form">
+    <div class="row gy-4">
+        <div class="col-12">
+            <input type="text" name="name" class="form-control" placeholder="Your Name" required>
+        </div>
+        <div class="col-12">
+            <input type="email" name="email" class="form-control" placeholder="Your Email" required>
+        </div>
+        <div class="col-12">
+            <input type="text" name="subject" class="form-control" placeholder="Subject" required>
+        </div>
+        <div class="col-12">
+            <textarea name="message" rows="6" class="form-control" placeholder="Message" required></textarea>
+        </div>
+        <div class="col-12 text-center">
+            <div class="loading" style="display:none;">
+                <div class="spinner-border text-primary" role="status">
+                    <span class="visually-hidden">Sending...</span>
+                </div>
+                Sending...
+            </div>
+            <div class="error-message text-danger" style="display:none;"></div>
+            <div class="sent-message text-success" style="display:none;">
+                Your message has been sent. Thank you!
+            </div>
+            <button type="submit" class="btn btn-submit w-100">Submit Message</button>
+        </div>
+    </div>
+</form>
 
-                    <div class="col-12 text-center">
-                      <div class="loading" style="display:none;">Sending...</div>
-                      <div class="error-message text-danger" style="display:none;"></div>
-                      <div class="sent-message text-success" style="display:none;">Your message has been sent. Thank
-                        you!</div>
-                      <button type="submit" class="btn btn-submit w-100">Submit Message</button>
-                    </div>
-                  </div>
-                </form>
+<script>
+document.getElementById('contactForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    // Get form elements
+    const form = e.target;
+    const loading = form.querySelector('.loading');
+    const errorMessage = form.querySelector('.error-message');
+    const successMessage = form.querySelector('.sent-message');
+    const submitBtn = form.querySelector('.btn-submit');
+    
+    // Reset messages
+    errorMessage.style.display = 'none';
+    successMessage.style.display = 'none';
+    loading.style.display = 'block';
+    submitBtn.disabled = true;
+    
+    // Collect form data
+    const formData = new FormData(form);
+    
+    // Send data via AJAX
+    fetch('contact-form.php', {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+        loading.style.display = 'none';
+        
+        if (data.success) {
+            successMessage.style.display = 'block';
+            form.reset();
+        } else {
+            errorMessage.innerHTML = data.message;
+            errorMessage.style.display = 'block';
+        }
+    })
+    .catch(error => {
+        loading.style.display = 'none';
+        errorMessage.innerHTML = 'An error occurred. Please try again.';
+        errorMessage.style.display = 'block';
+    })
+    .finally(() => {
+        submitBtn.disabled = false;
+    });
+});
+</script>
 
                
 
@@ -992,10 +1045,10 @@
       </div>
 
       <div class="social-links d-flex justify-content-center">
-        <a href="https://X.com/@ahsanamingorsi" target="_blank"><i class="bi bi-twitter"></i></a>
-        <a href="https://facebook.com/@ahsanamingorsi" target="_blank"><i class="bi bi-facebook"></i></a>
-        <a href="https://instagram.com/@ahsanamingorsi" target="_blank"><i class="bi bi-instagram"></i></a>
-        <a href="https://linkedin.com/in/ahsan-amin-gorsi" target="_blank"><i class="bi bi-linkedin"></i></a>
+        <a href="https://x.com/ahsanamingorsi" target="_blank"><i class="bi bi-twitter"></i></a>
+        <a href="https://www.facebook.com/share/1Cjf5EfiFf/" target="_blank"><i class="bi bi-facebook"></i></a>
+        <a href="https://www.instagram.com/ahsanamingorsi?igsh=MWg5cWJzODVkNXZ6Zg==" target="_blank"><i class="bi bi-instagram"></i></a>
+        <a href="https://www.linkedin.com/in/ahsan-amin-gorsi-439ab6345?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank"><i class="bi bi-linkedin"></i></a>
       </div>
 
       <div class="credits text-center mt-2">
@@ -1013,6 +1066,7 @@
   <!-- Vendor JS Files -->
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="assets/vendor/php-email-form/validate.js"></script>
+    <script src="assets/vendor/php-email-form/contact-form.php"></script>
   <script src="assets/vendor/aos/aos.js"></script>
   <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
   <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
