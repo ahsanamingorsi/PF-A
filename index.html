@@ -970,117 +970,93 @@
     </div>
 </form>
 <script>
-// Enhanced contact form handler
-document.addEventListener('DOMContentLoaded', function() {
-    const contactForm = document.getElementById('contactForm');
+document.getElementById('contactForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
     
-    if (!contactForm) {
-        console.error('Contact form not found!');
-        return;
-    }
+    const form = e.target;
+    const loading = form.querySelector('.loading');
+    const errorMessage = form.querySelector('.error-message');
+    const successMessage = form.querySelector('.sent-message');
+    const submitBtn = form.querySelector('.btn-submit');
     
-    contactForm.addEventListener('submit', async function(e) {
-        e.preventDefault();
-        
-        console.log('Form submit event triggered');
-        
-        // Get form elements
-        const form = e.target;
-        const loading = form.querySelector('.loading');
-        const errorMessage = form.querySelector('.error-message');
-        const successMessage = form.querySelector('.sent-message');
-        const submitBtn = form.querySelector('.btn-submit');
-        
-        // Reset messages
-        errorMessage.style.display = 'none';
-        errorMessage.textContent = '';
-        successMessage.style.display = 'none';
-        loading.style.display = 'block';
-        submitBtn.disabled = true;
-        
-        // Collect form data
-        const formData = new FormData(form);
-        
-        // Log form data for debugging
-        console.log('Form Data:', Object.fromEntries(formData));
-        
-        try {
-            // Send data via AJAX
-            const response = await fetch('contact-form-debug.php', {
-                method: 'POST',
-                body: formData,
-                headers: {
-                    'Accept': 'application/json',
-                }
-            });
-            
-            console.log('Response status:', response.status);
-            console.log('Response headers:', response.headers);
-            
-            // Check if response is JSON
-            const contentType = response.headers.get('content-type');
-            if (!contentType || !contentType.includes('application/json')) {
-                const text = await response.text();
-                console.error('Non-JSON response:', text.substring(0, 200));
-                throw new Error('Server returned non-JSON response');
-            }
-            
-            const data = await response.json();
-            console.log('Response data:', data);
-            
-            loading.style.display = 'none';
-            
-            if (data.success) {
-                successMessage.style.display = 'block';
-                form.reset();
-            } else {
-                errorMessage.textContent = data.message || 'An error occurred';
-                errorMessage.style.display = 'block';
-            }
-            
-        } catch (error) {
-            console.error('Fetch error:', error);
-            loading.style.display = 'none';
-            errorMessage.textContent = 'Error: ' + error.message + ' (Check console for details)';
-            errorMessage.style.display = 'block';
-        } finally {
-            submitBtn.disabled = false;
-        }
-    });
-});
-
-// Add a test button for debugging
-document.addEventListener('DOMContentLoaded', function() {
-    // Add test button after form (optional)
-    const form = document.getElementById('contactForm');
-    if (form) {
-        const testBtn = document.createElement('button');
-        testBtn.type = 'button';
-        testBtn.textContent = 'Test AJAX';
-        testBtn.className = 'btn btn-secondary mt-3';
-        testBtn.onclick = testAjaxConnection;
-        form.parentNode.appendChild(testBtn);
-    }
-});
-
-// Test AJAX connection
-async function testAjaxConnection() {
+    // Reset
+    errorMessage.style.display = 'none';
+    errorMessage.textContent = '';
+    successMessage.style.display = 'none';
+    loading.style.display = 'block';
+    submitBtn.disabled = true;
+    
+    // Form data
+    const formData = new FormData(form);
+    
     try {
-        const response = await fetch('contact-form-debug.php', {
+        const response = await fetch('contact-form.php', {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded',
-            },
-            body: 'test=1&name=Test+User&email=test@example.com'
+            body: formData
         });
-        const text = await response.text();
-        console.log('Test response:', text);
-        alert('Test response logged to console');
+        
+        // Get response as text first
+        const responseText = await response.text();
+        console.log('Raw response:', responseText);
+        
+        // Try to parse as JSON
+        let data;
+        try {
+            data = JSON.parse(responseText);
+        } catch (jsonError) {
+            console.warn('Response is not JSON, treating as plain text');
+            
+            // Check if it looks like HTML/error page
+            if (responseText.includes('<html') || responseText.includes('<!DOCTYPE')) {
+                throw new Error('Server returned HTML page instead of JSON. PHP may have errors.');
+            }
+            
+            // Use plain text as message
+            data = {
+                success: response.ok,
+                message: responseText.substring(0, 200) // First 200 chars
+            };
+        }
+        
+        loading.style.display = 'none';
+        
+        if (data.success) {
+            successMessage.textContent = data.message || 'Message sent successfully!';
+            successMessage.style.display = 'block';
+            form.reset();
+        } else {
+            errorMessage.textContent = data.message || 'Error occurred';
+            errorMessage.style.display = 'block';
+        }
+        
     } catch (error) {
-        console.error('Test failed:', error);
-        alert('Test failed: ' + error.message);
+        console.error('Full error:', error);
+        loading.style.display = 'none';
+        
+        // User-friendly error messages
+        let userMessage = '';
+        
+        if (error.name === 'TypeError' && error.message.includes('fetch')) {
+            userMessage = 'Cannot connect to server. Check if PHP is running.';
+        } else if (error.message.includes('HTML page')) {
+            userMessage = 'Server error. Please check PHP configuration.';
+        } else if (error.message.includes('JSON')) {
+            userMessage = 'Server returned invalid response.';
+        } else {
+            userMessage = 'Error: ' + error.message;
+        }
+        
+        errorMessage.innerHTML = `
+            ${userMessage}<br>
+            <small style="font-size: 12px; color: #666;">
+                Technical details in browser console (F12)
+            </small>
+        `;
+        errorMessage.style.display = 'block';
+    } finally {
+        submitBtn.disabled = false;
     }
-}
+});
 
      </script>          
 
@@ -1131,6 +1107,7 @@ async function testAjaxConnection() {
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <!--<script src="assets/vendor/php-email-form/validate.js"></script>-->
     <script src="contact-form.php"></script>
+       <script src="test-json.php"></script>
   <script src="assets/vendor/aos/aos.js"></script>
   <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
   <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
