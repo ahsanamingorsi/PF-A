@@ -1,291 +1,554 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Study Materials Survey · UniAccess</title>
-  <!-- Bootstrap 5 + icons (clean, modern) -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-  <!-- Bootstrap Icons (for clean icons) -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-  <!-- subtle custom for extra softness / university style -->
-  <style>
-    body {
-      background: #f8fafc;
-      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
-      scroll-behavior: smooth;
-    }
-    .section-padding {
-      padding: 4rem 0;
-    }
-    .bg-soft-light {
-      background-color: #ffffff;
-    }
-    .bg-soft-accent {
-      background-color: #f0f4f8;
-    }
-    .hero-title {
-      font-weight: 600;
-      color: #0a2a44; /* deep navy – academic touch */
-      letter-spacing: -0.02em;
-    }
-    .lead {
-      color: #2d3e5f;
-    }
-    .btn-primary-custom {
-      background-color: #1e3a6b;
-      border: none;
-      border-radius: 40px;
-      padding: 0.9rem 2.5rem;
-      font-weight: 500;
-      font-size: 1.2rem;
-      box-shadow: 0 8px 16px rgba(0,40,80,0.1);
-      transition: all 0.15s;
-    }
-    .btn-primary-custom:hover {
-      background-color: #143157;
-      transform: translateY(-2px);
-      box-shadow: 0 12px 22px rgba(0,40,80,0.15);
-    }
-    .btn-outline-primary-custom {
-      border: 2px solid #1e3a6b;
-      color: #1e3a6b;
-      border-radius: 40px;
-      padding: 0.8rem 2.5rem;
-      font-weight: 500;
-      background-color: transparent;
-    }
-    .btn-outline-primary-custom:hover {
-      background-color: #1e3a6b;
-      color: #fff;
-    }
-    .icon-circle {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      background: #e9ecf3;
-      width: 70px;
-      height: 70px;
-      border-radius: 50%;
-      margin-bottom: 1.2rem;
-      color: #1e3a6b;
-      font-size: 2rem;
-    }
-    .card-border {
-      border: none;
-      border-radius: 28px;
-      background: white;
-      box-shadow: 0 12px 30px rgba(0,0,0,0.03);
-      transition: 0.1s;
-    }
-    .card-border:hover {
-      box-shadow: 0 20px 35px rgba(30, 58, 107, 0.06);
-    }
-    .section-title {
-      font-weight: 600;
-      color: #0a2a44;
-      margin-bottom: 1.5rem;
-    }
-    footer {
-      background: #ffffffd9;
-      backdrop-filter: blur(2px);
-      border-top: 1px solid rgba(0,0,0,0.05);
-      color: #5a6e85;
-      font-size: 0.95rem;
-    }
-    .btn-google {
-      background-color: #0f2b4b;
-      color: white;
-      border-radius: 40px;
-      padding: 0.9rem 2.8rem;
-      font-weight: 500;
-      font-size: 1.2rem;
-      border: none;
-      transition: 0.15s;
-    }
-    .btn-google:hover {
-      background-color: #1a3e64;
-      color: white;
-    }
-    /* center everything */
-    .container {
-      max-width: 1000px;
-    }
-    h2 {
-      position: relative;
-      display: inline-block;
-      margin-bottom: 2rem;
-    }
-    .text-container {
-      max-width: 750px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-  </style>
-</head>
-<body>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Ahsan Amin Gorsi | ASP.NET & C# Web Developer in Pakistan</title>
 
-  <!-- NAVBAR (optional small, but keeps clean) -->
-  <nav class="navbar navbar-expand-lg bg-transparent py-3">
-    <div class="container">
-      <span class="navbar-brand mb-0 h1 fw-semibold text-primary-emphasis">
-        <i class="bi bi-journal-bookmark-fill me-2" style="color:#1e3a6b;"></i>UniAccess
-      </span>
-      <div class="ms-auto">
-        <span class="text-muted" style="font-size:0.95rem;">student research · pilot</span>
-      </div>
-    </div>
-  </nav>
+    <meta name="description"
+        content="Ahsan Amin Gorsi is an ASP.NET MVC and C# web developer in Pakistan. Building scalable web applications using .NET, SQL Server, and modern frontend technologies.">
 
-  <!-- HERO Section (Section 1) -->
-  <section class="section-padding pt-4 pt-lg-5">
-    <div class="container text-center">
-      <div class="row justify-content-center">
-        <div class="col-lg-10 col-xl-9 text-container">
-          <h1 class="hero-title display-4 fw-semibold mb-4">Help Improve How Students Access Study Materials</h1>
-          <p class="lead fs-4 mb-5 mx-auto" style="max-width: 700px;">
-            Many students struggle to find organized slides, notes, books, and past papers. 
-            Your input shapes a better solution.
-          </p>
-          <!-- large button "Fill the 3 Minute Survey" -->
-          <a href="#survey-section" class="btn btn-primary-custom btn-lg text-white px-5 py-3 fs-5 rounded-pill">
-            <i class="bi bi-pencil-square me-2"></i> Fill the 3 Minute Survey
-          </a>
-          <!-- subtle icons under hero -->
-          <div class="d-flex justify-content-center gap-5 mt-5 pt-3">
-            <div><i class="bi bi-file-slides-fill fs-2" style="color:#6c86a6;"></i><span class="ms-2 text-secondary">slides</span></div>
-            <div><i class="bi bi-journal-text fs-2" style="color:#6c86a6;"></i><span class="ms-2 text-secondary">notes</span></div>
-            <div><i class="bi bi-book-half fs-2" style="color:#6c86a6;"></i><span class="ms-2 text-secondary">books</span></div>
-            <div><i class="bi bi-file-earmark-pdf-fill fs-2" style="color:#6c86a6;"></i><span class="ms-2 text-secondary">past papers</span></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+    <meta name="keywords" content="">
 
-  <!-- Section 2: The Problem -->
-  <section class="section-padding bg-soft-accent">
-    <div class="container text-center">
-      <div class="row justify-content-center">
-        <div class="col-lg-8 text-container">
-          <div class="icon-circle mx-auto">
-            <i class="bi bi-exclamation-triangle-fill"></i>
-          </div>
-          <h2 class="section-title display-6 fw-semibold">The problem</h2>
-          <p class="fs-5 text-secondary-emphasis">
-            Students often search through endless <strong>WhatsApp groups, email threads, and scattered Google Drive links</strong> 
-            to find study materials. Materials get lost, versions are messy, and valuable resources stay hidden.
-          </p>
-          <!-- visual icons hinting at chaos -->
-          <div class="d-flex flex-wrap justify-content-center gap-4 mt-4 pt-2">
-            <span class="badge bg-light text-dark p-3 rounded-4 border"><i class="bi bi-whatsapp me-2" style="color:#25D366;"></i>WhatsApp</span>
-            <span class="badge bg-light text-dark p-3 rounded-4 border"><i class="bi bi-envelope-paper-fill me-2" style="color:#d44638;"></i>email threads</span>
-            <span class="badge bg-light text-dark p-3 rounded-4 border"><i class="bi bi-google-drive me-2" style="color:#0F9D58;"></i>drive links</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+    <!-- Favicons -->
+    <link href="AAG Logo.png" rel="icon">
+    <link href="AAG Logo.png" rel="apple-touch-icon">
 
-  <!-- Section 3: The Idea -->
-  <section class="section-padding bg-soft-light">
-    <div class="container text-center">
-      <div class="row justify-content-center">
-        <div class="col-lg-8 text-container">
-          <div class="icon-circle mx-auto">
-            <i class="bi bi-lightbulb-fill"></i>
-          </div>
-          <h2 class="section-title display-6 fw-semibold">The idea</h2>
-          <p class="fs-5 text-secondary-emphasis">
-            We are exploring a central platform where <strong>teachers upload materials once</strong> — slides, notes, books, and past papers — 
-            and students can easily access them anytime, without digging through chats or outdated folders.
-          </p>
-          <!-- icons representing upload/access -->
-          <div class="d-flex justify-content-center gap-5 mt-4">
-            <div><i class="bi bi-cloud-upload-fill fs-1" style="color:#1e3a6b;"></i><div class="small text-muted mt-2">teachers upload once</div></div>
-            <div><i class="bi bi-easel-fill fs-1" style="color:#1e3a6b;"></i><div class="small text-muted mt-2">organised library</div></div>
-            <div><i class="bi bi-collection-fill fs-1" style="color:#1e3a6b;"></i><div class="small text-muted mt-2">access anytime</div></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com" rel="preconnect">
+    <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Noto+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Questrial:wght@400&display=swap"
+        rel="stylesheet">
 
-  <!-- Section 4: Why This Survey -->
-  <section class="section-padding bg-soft-accent">
-    <div class="container text-center">
-      <div class="row justify-content-center">
-        <div class="col-lg-8 text-container">
-          <div class="icon-circle mx-auto">
-            <i class="bi bi-question-circle-fill"></i>
-          </div>
-          <h2 class="section-title display-6 fw-semibold">Why this survey?</h2>
-          <p class="fs-5">
-            The survey helps us <strong>understand how students currently find resources</strong>, 
-            what frustrations they face, and what you actually need. Your answers will guide a design that works for real students.
-          </p>
-          <!-- small check list style -->
-          <div class="d-flex flex-column flex-sm-row justify-content-center gap-4 mt-4">
-            <span><i class="bi bi-check-circle-fill text-success me-1"></i> current habits</span>
-            <span><i class="bi bi-check-circle-fill text-success me-1"></i> biggest pain points</span>
-            <span><i class="bi bi-check-circle-fill text-success me-1"></i> feature wishes</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+    <!-- Vendor CSS Files -->
+    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+    <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
-  <!-- Section 5: Survey Button (clear google form link) with id to match hero jump -->
-  <section id="survey-section" class="section-padding pt-0" style="padding-top: 2rem !important;">
-    <div class="container text-center">
-      <div class="card card-border border-0 mx-auto p-5" style="max-width: 750px; background: #ffffff;">
-        <div class="icon-circle mx-auto" style="background: #dee5f0;">
-          <i class="bi bi-google"></i>
-        </div>
-        <h3 class="fw-semibold mb-3">Ready to contribute?</h3>
-        <p class="fs-5 text-secondary mb-4">The survey takes less than 3 minutes — and helps build a better study environment.</p>
-        <!-- clear button linking to a google form (using placeholder #) – keep as real link? use actual google form placeholder -->
-        <a href="https://forms.gle/your-survey-link" class="btn btn-google btn-lg rounded-pill px-5 py-3 fs-5" target="_blank">
-          <i class="bi bi-box-arrow-up-right me-2"></i> Open Google Form Survey
-        </a>
-        <p class="text-muted small mt-4"><i class="bi bi-lock-fill me-1"></i> anonymous · only for research</p>
-        <!-- supplementary note (dummy link) -->
-      </div>
-    </div>
-  </section>
+    <!-- Main CSS File -->
+    <link href="assets/css/main.css" rel="stylesheet">
 
-  <!-- simple footer to keep professional -->
-  <footer class="py-4 text-center">
-    <div class="container">
-      <div class="d-flex justify-content-center gap-4 mb-2">
-        <i class="bi bi-slideshare"></i>
-        <i class="bi bi-journal-richtext"></i>
-        <i class="bi bi-book"></i>
-        <i class="bi bi-files"></i>
-      </div>
-      <span>© 2025 UniAccess — student research project. improving study material access.</span>
-    </div>
-  </footer>
+    <!-- =======================================================
+  * Template Name: EasyFolio
+  * Template URL: https://bootstrapmade.com/easyfolio-bootstrap-portfolio-template/
+  * Updated: Feb 21 2025 with Bootstrap v5.3.3
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+    <!-- Bootstrap 5 + icons (clean, modern) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons (for clean icons) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- subtle custom for extra softness / university style -->
+    <style>
+        /*--------------------------------------------------------------
+    # Font & Color Variables
+    # Help: https://bootstrapmade.com/color-system/
+    --------------------------------------------------------------*/
+        /* Fonts */
+        :root {
+            --default-font: "Roboto", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+            --heading-font: "Questrial", sans-serif;
+            --nav-font: "Noto Sans", sans-serif;
+        }
 
-  <!-- optional smooth scroll for the hero button (bootstrap native) -->
-  <script>
-    (function() {
-      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-          const href = this.getAttribute('href');
-          if (href === "#" || href === "#survey-section") {
-            e.preventDefault();
-            const target = document.getElementById('survey-section');
-            if (target) {
-              target.scrollIntoView({ behavior: 'smooth' });
+        /* Global Colors */
+        :root {
+            --background-color: #ffffff;
+            --default-color: #0a0f14;
+            --heading-color: #0f2943;
+            /* deep navy – academic */
+            --accent-color: #0078ff;
+            /* bright blue for buttons, icons */
+            --surface-color: #ffffff;
+            --contrast-color: #ffffff;
+        }
+
+        /* Nav Menu Colors */
+        :root {
+            --nav-color: #0a0f14;
+            --nav-hover-color: #0056cc;
+            --nav-mobile-background-color: #ffffff;
+            --nav-dropdown-background-color: #ffffff;
+            --nav-dropdown-color: #0a0f14;
+            --nav-dropdown-hover-color: #0056cc;
+        }
+
+        /* Light background variant */
+        .light-background {
+            --background-color: #faf9fb;
+            --surface-color: #ffffff;
+        }
+
+        /* Smooth scroll */
+        :root {
+            scroll-behavior: smooth;
+        }
+
+        /*--------------------------------------------------------------
+    # General Styling & Shared Classes
+    --------------------------------------------------------------*/
+        body {
+            color: var(--default-color);
+            background-color: var(--background-color);
+            font-family: var(--default-font);
+        }
+
+        a {
+            color: var(--accent-color);
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        a:hover {
+            color: color-mix(in srgb, var(--accent-color), transparent 25%);
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            color: var(--heading-color);
+            font-family: var(--heading-font);
+        }
+
+        /*--------------------------------------------------------------
+    # Global Sections
+    --------------------------------------------------------------*/
+        section,
+        .section {
+            color: var(--default-color);
+            background-color: var(--background-color);
+            padding: 60px 0;
+            scroll-margin-top: 90px;
+            overflow: clip;
+        }
+
+        /*--------------------------------------------------------------
+    # Global Section Titles (reuse styling)
+    --------------------------------------------------------------*/
+        .section-title {
+            text-align: center;
+            padding-bottom: 40px;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            background: linear-gradient(120deg, var(--heading-color), var(--accent-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-title p {
+            margin: 15px auto 0;
+            font-size: 16px;
+            max-width: 700px;
+            color: color-mix(in srgb, var(--default-color), transparent 25%);
+            line-height: 1.8;
+        }
+
+        @media (max-width: 768px) {
+            .section-title h2 {
+                font-size: 32px;
             }
-          }
-        });
-      });
-    })();
-  </script>
+        }
 
-  <!-- Bootstrap JS (optional for any interactions, not required but keeping) -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+        /*--------------------------------------------------------------
+    # Hero style (adapted from template)
+    --------------------------------------------------------------*/
+        .hero-page {
+            padding: 80px 0 40px 0;
+            background-color: var(--background-color);
+        }
+
+        .hero-page .content h2 {
+            font-size: 3.2rem;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            color: var(--heading-color);
+        }
+
+        @media (max-width: 991px) {
+            .hero-page .content h2 {
+                font-size: 2.5rem;
+            }
+        }
+
+        .hero-page .content .lead {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            color: color-mix(in srgb, var(--default-color), transparent 20%);
+        }
+
+        .btn-primary-custom {
+            background-color: var(--accent-color);
+            border-color: var(--accent-color);
+            color: var(--contrast-color);
+            border-radius: 50px;
+            padding: 0.9rem 2.5rem;
+            font-weight: 500;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 20px color-mix(in srgb, var(--accent-color), transparent 80%);
+        }
+
+        .btn-primary-custom:hover {
+            background-color: color-mix(in srgb, var(--accent-color), transparent 15%);
+            border-color: color-mix(in srgb, var(--accent-color), transparent 15%);
+            transform: translateY(-2px);
+            color: #fff;
+        }
+
+        .btn-google-custom {
+            background-color: var(--accent-color);
+            border: none;
+            border-radius: 50px;
+            padding: 0.9rem 2.8rem;
+            font-weight: 500;
+            font-size: 1.2rem;
+            color: var(--contrast-color);
+            transition: 0.3s;
+        }
+
+        .btn-google-custom:hover {
+            background-color: color-mix(in srgb, var(--accent-color), transparent 15%);
+            transform: translateY(-2px);
+            color: #fff;
+        }
+
+        .icon-circle {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: color-mix(in srgb, var(--accent-color), transparent 90%);
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin-bottom: 1.2rem;
+            color: var(--accent-color);
+            font-size: 2.5rem;
+        }
+
+        .card-border {
+            border: none;
+            border-radius: 28px;
+            background: var(--surface-color);
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.05);
+        }
+
+        .bg-soft-accent {
+            background-color: color-mix(in srgb, var(--accent-color), transparent 97%);
+        }
+
+        .text-container {
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* badges like WhatsApp etc */
+        .badge-icon {
+            background-color: var(--surface-color);
+            color: var(--default-color);
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            border: 1px solid color-mix(in srgb, var(--default-color), transparent 85%);
+            font-weight: 500;
+        }
+
+        /* footer */
+        .footer {
+            color: var(--default-color);
+            background-color: var(--background-color);
+            padding: 30px 0;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.02);
+        }
+    </style>
+
+    <meta name="google-site-verification" content="FccLuGbT-NdXDjcYDZIGhsKXsUH9UKJ_b_UTs49mWs0" />
+</head>
+
+
+<body class="index-page">
+
+    <header id="header" class="header d-flex align-items-center sticky-top">
+        <div
+            class="header-container container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
+
+            <a href="index.html" class="logo d-flex align-items-center me-auto me-xl-0">
+                <!-- Uncomment the line below if you also wish to use an image logo -->
+                <img src="AAG Logo.png" alt="">
+                <h1 class="sitename">Ahsan Amin Gorsi</h1>
+            </a>
+
+            <nav id="navmenu" class="navmenu">
+                <nav id="navmenu" class="navmenu">
+                    <ul>
+                        <li><a href="index.html#hero" class="active">Home</a></li>
+                        <li><a href="index.html#about">About</a></li>
+                        <li><a href="index.html#resume">Resume</a></li>
+                        <li><a href="index.html#projects">Projects</a></li>
+                        <li><a href="index.html#services">Services</a></li>
+
+                        <li><a href="index.html#contact">Contact</a></li>
+                        <li><a href="student-survey.html">Survey</a></li>
+
+                    </ul>
+                    <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+                </nav>
+                <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+            </nav>
+
+            <div class="header-social-links">
+                <a href="https://x.com/ahsanamingorsi" class="twitter"><i class="bi bi-twitter-x"></i></a>
+                <a href="https://www.facebook.com/share/1Cjf5EfiFf/" class="facebook"><i class="bi bi-facebook"></i></a>
+                <a href="https://www.instagram.com/ahsanamingorsi?igsh=MWg5cWJzODVkNXZ6Zg==" class="instagram"><i
+                        class="bi bi-instagram"></i></a>
+                <a href="https://www.linkedin.com/in/ahsan-amin-gorsi-439ab6345?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+                    class="linkedin"><i class="bi bi-linkedin"></i></a>
+            </div>
+
+
+        </div>
+    </header>
+
+    <main class="main">
+
+
+
+        <!-- HERO Section (Section 1) using template hero style -->
+        <section class="hero-page">
+            <div class="container">
+                <div class="row justify-content-center text-center">
+                    <div class="col-lg-10 col-xl-9 text-container">
+                        <div class="content">
+                            <h2 class="display-4 fw-bold">Help Improve How Students Access Study Materials</h2>
+                            <p class="lead fs-4 mx-auto">Many students struggle to find organized slides, notes, books,
+                                and past papers. Your input shapes a better solution.</p>
+                            <div class="cta-buttons d-flex justify-content-center gap-3 flex-wrap">
+                                <a href="#survey-section" class="btn btn-primary-custom btn-lg"><i
+                                        class="bi bi-pencil-square me-2"></i>Fill the 3 Minute Survey</a>
+                            </div>
+                            <!-- Icons for slides, notes, books, past papers -->
+                            <div class="d-flex justify-content-center gap-5 mt-5 pt-3">
+                                <div><i class="bi bi-file-slides-fill fs-1" style="color: var(--accent-color);"></i>
+                                    <div class="small text-muted">slides</div>
+                                </div>
+                                <div><i class="bi bi-journal-text fs-1" style="color: var(--accent-color);"></i>
+                                    <div class="small text-muted">notes</div>
+                                </div>
+                                <div><i class="bi bi-book-half fs-1" style="color: var(--accent-color);"></i>
+                                    <div class="small text-muted">books</div>
+                                </div>
+                                <div><i class="bi bi-file-earmark-pdf-fill fs-1"
+                                        style="color: var(--accent-color);"></i>
+                                    <div class="small text-muted">past papers</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2: The Problem (light-background) -->
+        <section class="light-background">
+            <div class="container text-center">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8 text-container">
+                        <div class="icon-circle mx-auto">
+                            <i class="bi bi-exclamation-triangle-fill"></i>
+                        </div>
+                        <div class="section-title">
+                            <h2>The problem</h2>
+                            <div class="title-shape"></div>
+                        </div>
+                        <p class="fs-5 mb-5">Students often search through endless <strong>WhatsApp groups, email
+                                threads, and scattered Google Drive links</strong> to find study materials. Materials
+                            get lost, versions are messy, and valuable resources stay hidden.</p>
+                        <div class="d-flex flex-wrap justify-content-center gap-3">
+                            <span class="badge-icon"><i class="bi bi-whatsapp me-2"
+                                    style="color:#25D366;"></i>WhatsApp</span>
+                            <span class="badge-icon"><i class="bi bi-envelope-paper-fill me-2"
+                                    style="color:#d44638;"></i>email threads</span>
+                            <span class="badge-icon"><i class="bi bi-google-drive me-2" style="color:#0F9D58;"></i>drive
+                                links</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: The Idea (background default) -->
+        <section>
+            <div class="container text-center">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8 text-container">
+                        <div class="icon-circle mx-auto">
+                            <i class="bi bi-lightbulb-fill"></i>
+                        </div>
+                        <div class="section-title">
+                            <h2>The idea</h2>
+                        </div>
+                        <p class="fs-5 mb-5">We are exploring a central platform where <strong>teachers upload materials
+                                once</strong> — slides, notes, books, and past papers — and students can easily access
+                            them anytime, without digging through chats or outdated folders.</p>
+                        <div class="d-flex justify-content-center gap-5 mt-4">
+                            <div><i class="bi bi-cloud-upload-fill fs-1" style="color: var(--accent-color);"></i>
+                                <div class="small text-muted mt-2">teachers upload once</div>
+                            </div>
+                            <div><i class="bi bi-easel-fill fs-1" style="color: var(--accent-color);"></i>
+                                <div class="small text-muted mt-2">organised library</div>
+                            </div>
+                            <div><i class="bi bi-collection-fill fs-1" style="color: var(--accent-color);"></i>
+                                <div class="small text-muted mt-2">access anytime</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: Why This Survey (light-background) -->
+        <section class="light-background">
+            <div class="container text-center">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8 text-container">
+                        <div class="icon-circle mx-auto">
+                            <i class="bi bi-question-circle-fill"></i>
+                        </div>
+                        <div class="section-title">
+                            <h2>Why this survey?</h2>
+                        </div>
+                        <p class="fs-5">The survey helps us <strong>understand how students currently find
+                                resources</strong>, what frustrations they face, and what you actually need. Your
+                            answers will guide a design that works for real students.</p>
+                        <div class="d-flex flex-column flex-sm-row justify-content-center gap-4 mt-4">
+                            <span><i class="bi bi-check-circle-fill" style="color: var(--accent-color);"></i> current
+                                habits</span>
+                            <span><i class="bi bi-check-circle-fill" style="color: var(--accent-color);"></i> biggest
+                                pain points</span>
+                            <span><i class="bi bi-check-circle-fill" style="color: var(--accent-color);"></i> feature
+                                wishes</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 5: Survey Button + card (uses surface & accent) -->
+        <section id="survey-section" style="padding-top: 0;">
+            <div class="container text-center">
+                <div class="card card-border mx-auto p-5" style="max-width: 750px;">
+                    <div class="icon-circle mx-auto"
+                        style="background: color-mix(in srgb, var(--accent-color), transparent 90%);">
+                        <i class="bi bi-google"></i>
+                    </div>
+                    <h3 class="fw-semibold mb-3" style="color: var(--heading-color);">Ready to contribute?</h3>
+                    <p class="fs-5 text-secondary-emphasis mb-4">The survey takes less than 3 minutes — and helps build
+                        a better study environment.</p>
+                    <!-- google form button (template style btn) -->
+                    <a href="https://forms.gle/63Vnxj4oC7pXuywv5"
+                        class="btn btn-google-custom btn-lg rounded-pill px-5 py-3 fs-5" target="_blank">
+                        <i class="bi bi-box-arrow-up-right me-2"></i> Open Google Form Survey
+                    </a>
+                    <p class="text-muted small mt-4"><i class="bi bi-lock-fill me-1"></i> anonymous · only for research
+                    </p>
+                </div>
+            </div>
+        </section>
+
+
+
+
+    </main>
+
+    <footer id="footer" class="footer">
+
+        <div class="container">
+            <div class="copyright text-center">
+                <p>© <span>Copyright</span> <strong class="px-1 sitename">Ahsan Amin</strong> <span>All Rights
+                        Reserved</span>
+                </p>
+            </div>
+
+            <div class="social-links d-flex justify-content-center">
+                <a href="https://x.com/ahsanamingorsi" target="_blank"><i class="bi bi-twitter-x"></i></a>
+                <a href="https://www.facebook.com/share/1Cjf5EfiFf/" target="_blank"><i class="bi bi-facebook"></i></a>
+                <a href="https://www.instagram.com/ahsanamingorsi?igsh=MWg5cWJzODVkNXZ6Zg==" target="_blank"><i
+                        class="bi bi-instagram"></i></a>
+                <a href="https://www.linkedin.com/in/ahsan-amin-gorsi-439ab6345?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+                    target="_blank"><i class="bi bi-linkedin"></i></a>
+            </div>
+
+            <div class="credits text-center mt-2">
+                Designed & Made by <strong>Ahsan Amin</strong>
+            </div>
+        </div>
+
+    </footer>
+
+
+    <!-- Scroll Top -->
+    <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i
+            class="bi bi-arrow-up-short"></i></a>
+
+    <!-- Vendor JS Files -->
+    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/vendor/php-email-form/validate.js"></script>
+    <script src="contact-form.php"></script>
+    <script src="test-json.php"></script>
+    <script src="assets/vendor/aos/aos.js"></script>
+    <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
+    <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+    <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+    <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+
+    <!-- Main JS File -->
+    <script src="assets/js/main.js"></script>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Ahsan Amin Gorsi",
+  "jobTitle": "ASP.NET Web Developer",
+  "url": "https://www.ahsanamingorsi.com",
+  "sameAs": [
+    "https://www.linkedin.com/in/ahsan-amin-gorsi-439ab6345",
+    "https://github.com/ahsanamingorsi"
+  ]
+}
+</script>
+    <!-- smooth scroll for button -->
+    <script>
+        (function () {
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    const href = this.getAttribute('href');
+                    if (href === "#" || href === "#survey-section") {
+                        e.preventDefault();
+                        const target = document.getElementById('survey-section');
+                        if (target) target.scrollIntoView({ behavior: 'smooth' });
+                    }
+                });
+            });
+        })();
+    </script>
+    <!-- Bootstrap JS bundle (optional for any toggles) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
+
 </html>
