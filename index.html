@@ -833,6 +833,234 @@
 
     </section><!-- /Resume Section -->
 
+<!--Gallary-->
+<section id="gallery" class="section">
+  <div class="container">
+    <!-- Section title using survey page styling (centered) with animation -->
+    <div class="section-title text-center" data-aos="fade-up">
+      <h2>Gallery</h2>
+      <div class="title-shape">
+          <svg viewBox="0 0 200 20" xmlns="http://www.w3.org/2000/svg">
+            <path d="M 0,10 C 40,0 60,20 100,10 C 140,0 160,20 200,10" fill="none" stroke="currentColor"
+              stroke-width="2"></path>
+          </svg>
+      </div>
+      <p>Moments from events, award ceremonies, and behind the scenes</p>
+    </div>
+
+    <!-- Responsive grid gallery: automatically handles 1,2,3+ images -->
+    <div class="row g-4 justify-content-center">
+      <!-- Gallery Item 1 (animated card) -->
+      <div class="col-sm-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+        <div class="gallery-item card-border h-100 p-3 p-md-4 text-center hover-scale">
+          <div class="gallery-image-wrapper rounded-4 overflow-hidden shadow-sm mb-3" style="background: color-mix(in srgb, var(--accent-color), transparent 95%);">
+            <img src="eic-award-stage.jpg" alt="Receiving award at EIC 25" class="img-fluid w-100" style="aspect-ratio: 4/3; object-fit: cover; transition: transform 0.5s ease;">
+          </div>
+          <div class="d-flex align-items-center justify-content-center gap-2">
+            <i class="bi bi-camera-fill" style="color: var(--accent-color); font-size: 0.9rem;"></i>
+            <p class="mb-0 fw-medium" style="color: var(--heading-color);">EIC 25 Award Ceremony</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Gallery Item 2 -->
+      <div class="col-sm-6 col-lg-4" data-aos="fade-up" data-aos-delay="150">
+        <div class="gallery-item card-border h-100 p-3 p-md-4 text-center hover-scale">
+          <div class="gallery-image-wrapper rounded-4 overflow-hidden shadow-sm mb-3" style="background: color-mix(in srgb, var(--accent-color), transparent 95%);">
+            <img src="26608c16489e137a9892e7130392366d.jpg" alt="Working at university event" class="img-fluid w-100" style="aspect-ratio: 4/3; object-fit: cover; transition: transform 0.5s ease;">
+          </div>
+          <div class="d-flex align-items-center justify-content-center gap-2">
+            <i class="bi bi-camera-fill" style="color: var(--accent-color); font-size: 0.9rem;"></i>
+            <p class="mb-0 fw-medium" style="color: var(--heading-color);">Media Team Work</p>
+          </div>
+        </div>
+      </div>
+
+
+
+    <!-- Responsive behavior explanation / note -->
+    <div class="text-center mt-5" data-aos="fade-in" data-aos-delay="300">
+      <span class="badge rounded-pill" style="background-color: color-mix(in srgb, var(--accent-color), transparent 90%); color: var(--accent-color); padding: 0.6rem 1.5rem;">
+        <i class="bi bi-images me-2"></i> 
+        <span id="imageCount"></span> 
+      </span>
+    </div>
+  </div>
+</section>
+
+<!-- Add custom CSS for hover animations -->
+<style>
+  /* Smooth hover scale effect for gallery items */
+  .hover-scale {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .hover-scale:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 20px 30px rgba(0, 120, 255, 0.1);
+  }
+  .hover-scale:hover img {
+    transform: scale(1.08);
+  }
+  
+  /* Ensure consistent card heights */
+  .gallery-item {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* AOS animation adjustments */
+  [data-aos] {
+    pointer-events: none;
+  }
+  [data-aos].aos-animate {
+    pointer-events: auto;
+  }
+</style>
+
+<!-- Include AOS (Animate On Scroll) library for scroll animations -->
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  // Initialize AOS animations
+  document.addEventListener('DOMContentLoaded', function() {
+    AOS.init({
+      duration: 800,
+      easing: 'ease-in-out',
+      once: true,
+      mirror: false
+    });
+    
+    // Optional: Update image count dynamically (just for demonstration)
+    const galleryItems = document.querySelectorAll('#gallery .col-sm-6.col-lg-4').length;
+    document.getElementById('imageCount').textContent = galleryItems;
+  });
+</script>
+
+<!-- Ensure Bootstrap JS is available for grid (if not already in page) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Add custom CSS for hover animations and aos adjustments -->
+<style>
+  /* Smooth hover scale effect for gallery items */
+  .hover-scale {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .hover-scale:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 20px 30px rgba(0, 120, 255, 0.1);
+  }
+  .hover-scale:hover img {
+    transform: scale(1.08);
+  }
+  
+  /* Carousel caption styling to match university theme */
+  .carousel-caption {
+    bottom: 20px;
+    padding: 0;
+  }
+  
+  /* Custom indicator styling */
+  .carousel-indicators [data-bs-target] {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: var(--accent-color);
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
+  }
+  .carousel-indicators .active {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+  
+  /* AOS animation adjustments (if AOS is not already loaded, we include CDN below) */
+  [data-aos] {
+    pointer-events: none;
+  }
+  [data-aos].aos-animate {
+    pointer-events: auto;
+  }
+</style>
+
+<!-- Include AOS (Animate On Scroll) library for scroll animations -->
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  // Initialize AOS animations
+  document.addEventListener('DOMContentLoaded', function() {
+    AOS.init({
+      duration: 800,
+      easing: 'ease-in-out',
+      once: true,
+      mirror: false
+    });
+  });
+</script>
+
+<!-- Ensure Bootstrap JS is available for carousel (if not already in page) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<!--Gallary End-->
+
+<!--Awards-->
+<section id="awards" class="section">
+  <div class="container">
+    <!-- Section title (centered, full width) using survey page styling -->
+    <div class="section-title text-center">
+      <h2>Awards & Recognition</h2>
+      <div class="title-shape">
+          <svg viewBox="0 0 200 20" xmlns="http://www.w3.org/2000/svg">
+            <path d="M 0,10 C 40,0 60,20 100,10 C 140,0 160,20 200,10" fill="none" stroke="currentColor"
+              stroke-width="2"></path>
+          </svg>
+      </div>
+      <p>Honors and accolades received for contributions and academic excellence</p>
+    </div>
+
+    <!-- Award card (image left, content right) -->
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <div class="award-card card-border p-4">
+          <div class="row g-4 align-items-center">
+            <!-- Left column: image (smaller, as specified) -->
+            <div class="col-md-4 text-center">
+              <img src="Award.jpeg" alt="EIC 25 Recognition Award" 
+                   class="img-fluid rounded-4 shadow-sm" 
+                   style="max-width: 160px; width: 100%; height: auto; border: 3px solid var(--surface-color);">
+            </div>
+
+            <!-- Right column: text details -->
+            <div class="col-md-8">
+              <!-- decorative icon + heading inline (optional but keeps design language) -->
+              <div class="d-flex align-items-center gap-2 mb-2">
+                <div class="icon-circle" style="width: 42px; height: 42px; font-size: 1.25rem;">
+                  <i class="bi bi-award-fill"></i>
+                </div>
+                <h3 class="h4 fw-semibold mb-0" style="color: var(--heading-color);">Recognition Award</h3>
+              </div>
+
+              <p class="fs-6 fw-medium mb-1 text-secondary-emphasis">
+                Entrepreneurship Innovation Conference 2025 (EIC 25)
+              </p>
+              <p class="fs-6 mb-2 text-secondary">University of Kotli AJK</p>
+              <p class="fs-6 mb-3" style="color: var(--accent-color); font-weight: 500;">2025</p>
+              
+              <p class="card-text" style="color: var(--default-color);">
+                Recognized for contributions in graphic design and media production 
+                for the EIC 25 university conference.
+              </p>
+              
+              <!-- subtle micro-interaction (tag) -->
+              <span class="badge rounded-pill mt-2" style="background-color: color-mix(in srgb, var(--accent-color), transparent 90%); color: var(--accent-color); font-weight: 400;">
+                <i class="bi bi-star-fill me-1" style="font-size: 0.7rem;"></i> excellence in design
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!--Awards End-->
+
     <!-- Projects Section -->
     <section id="projects" class="portfolio section">
 
@@ -986,175 +1214,6 @@
       </div>
 
     </section><!-- /Portfolio Section -->
-
-    <!-- Testimonials Section -->
-    <section id="testimonials" class="testimonials section light-background">
-
-      <!-- Section Title -->
-      <div class="container section-title" data-aos="fade-up">
-        <h2>Testimonials</h2>
-        <div class="title-shape">
-          <svg viewBox="0 0 200 20" xmlns="http://www.w3.org/2000/svg">
-            <path d="M 0,10 C 40,0 60,20 100,10 C 140,0 160,20 200,10" fill="none" stroke="currentColor"
-              stroke-width="2"></path>
-          </svg>
-        </div>
-        <p>Feedback from collaborators, clients, and peers highlighting skills, creativity, and professionalism.</p>
-      </div><!-- End Section Title -->
-
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
-
-        <div class="testimonials-slider swiper init-swiper">
-          <script type="application/json" class="swiper-config">
-        {
-          "slidesPerView": 1,
-          "loop": true,
-          "speed": 600,
-          "autoplay": {
-            "delay": 5000
-          },
-          "navigation": {
-            "nextEl": ".swiper-button-next",
-            "prevEl": ".swiper-button-prev"
-          }
-        }
-      </script>
-
-          <div class="swiper-wrapper">
-
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                <div class="row">
-                  <div class="col-lg-8">
-                    <h2>Exceptional Developer & Problem Solver</h2>
-                    <p>
-                      Ahsan has an outstanding ability to translate complex requirements into functional, elegant
-                      solutions. Working with him has consistently exceeded our expectations.
-                    </p>
-                    <p>
-                      His creativity, professionalism, and dedication make him a rare talent. He not only delivers on
-                      time but also adds innovative ideas that elevate the project.
-                    </p>
-                    <div class="profile d-flex align-items-center">
-                      <img src="assets/img/person/person-m-7.webp" class="profile-img" alt="">
-                      <div class="profile-info">
-                        <h3>Saul Goodman</h3>
-                        <span>Project Manager</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-lg-4 d-none d-lg-block">
-                    <div class="featured-img-wrapper">
-                      <img src="assets/img/person/person-m-7.webp" class="featured-img" alt="">
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div><!-- End Testimonial Item -->
-
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                <div class="row">
-                  <div class="col-lg-8">
-                    <h2>Creative Designer & Visionary</h2>
-                    <p>
-                      Ahsan approaches design with a perfect balance of creativity and functionality. Every interface
-                      and prototype he produces is visually stunning and user-friendly.
-                    </p>
-                    <p>
-                      His ability to understand user needs and translate them into intuitive designs has significantly
-                      improved our product’s engagement.
-                    </p>
-                    <div class="profile d-flex align-items-center">
-                      <img src="assets/img/person/person-f-8.webp" class="profile-img" alt="">
-                      <div class="profile-info">
-                        <h3>Sara Wilsson</h3>
-                        <span>UX Designer</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-lg-4 d-none d-lg-block">
-                    <div class="featured-img-wrapper">
-                      <img src="assets/img/person/person-f-8.webp" class="featured-img" alt="">
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div><!-- End Testimonial Item -->
-
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                <div class="row">
-                  <div class="col-lg-8">
-                    <h2>Reliable & Skilled Freelancer</h2>
-                    <p>
-                      I’ve collaborated with Ahsan on multiple projects, and he consistently delivers high-quality
-                      results. His coding skills are excellent, and he communicates effectively.
-                    </p>
-                    <p>
-                      What sets him apart is his commitment to excellence and willingness to go the extra mile to ensure
-                      project success.
-                    </p>
-                    <div class="profile d-flex align-items-center">
-                      <img src="assets/img/person/person-m-9.webp" class="profile-img" alt="">
-                      <div class="profile-info">
-                        <h3>Matt Brandon</h3>
-                        <span>Freelance Client</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-lg-4 d-none d-lg-block">
-                    <div class="featured-img-wrapper">
-                      <img src="assets/img/person/person-m-9.webp" class="featured-img" alt="">
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div><!-- End Testimonial Item -->
-
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                <div class="row">
-                  <div class="col-lg-8">
-                    <h2>Trustworthy & Visionary Partner</h2>
-                    <p>
-                      Ahsan is not just a developer; he’s a true partner in any project. His insights, creativity, and
-                      attention to detail elevate every collaboration.
-                    </p>
-                    <p>
-                      I highly recommend him to anyone seeking a professional who consistently delivers innovative
-                      solutions with integrity and skill.
-                    </p>
-                    <div class="profile d-flex align-items-center">
-                      <img src="assets/img/person/person-f-10.webp" class="profile-img" alt="">
-                      <div class="profile-info">
-                        <h3>Jena Karlis</h3>
-                        <span>Entrepreneur</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-lg-4 d-none d-lg-block">
-                    <div class="featured-img-wrapper">
-                      <img src="assets/img/person/person-f-10.webp" class="featured-img" alt="">
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div><!-- End Testimonial Item -->
-
-          </div>
-
-          <div class="swiper-navigation w-100 d-flex align-items-center justify-content-center">
-            <div class="swiper-button-prev"></div>
-            <div class="swiper-button-next"></div>
-          </div>
-
-        </div>
-
-      </div>
-
-    </section><!-- /Testimonials Section -->
-
 
     <!-- Services Section -->
     <section id="services" class="services section">
